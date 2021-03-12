@@ -220,8 +220,10 @@ fprintf('------------------------------------------------------------------\n');
   if TLEN==0
    format long % formato largo de impresión en pantalla
    fprintf('Desplazamientos en los nudos\n');
-   fprintf('                 NUD                  UX                 UY\n');
-   TEMP = [double(1:NNUD)',UXY]
+   TEMP = [double(1:NNUD)',UXY];
+   fprintf('      Nudo     |          UX         |          UY\n');
+   fprintf('       %d       |  %16.4e   |   %16.4e\n',TEMP' );   
+  
    format short % recuperar formato corto de impresión en pantalla
   end %endif
 
@@ -261,8 +263,10 @@ fprintf('------------------------------------------------------------------\n');
   if TLEN==0
     format long % formato largo de impresión en pantalla
     fprintf('Resultados en los elementos\n');
-    fprintf('                 ELE               EPEL                STEL                NFEL\n');
-    SRE
+    SRE1=SRE;
+    SRE1(:,5)=[];
+    fprintf('   Elemento    |     Deformación     |       Esfuerzo       |     fuerza axial\n');
+    fprintf('       %d       |  %16.4e   |   %16.4e   |   %16.4e\n',SRE1' );
     format short % recuperar formato corto de impresión en pantalla
   end % endif
   
